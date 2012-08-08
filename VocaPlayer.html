@@ -1,0 +1,370 @@
+<!-- VocaPlayer 0.7 --><!-- by catLee --><!-- http://catLee-area.co.cc --><!-- 2011/07/17 -->
+<script>
+    //注意！本區為自訂性設定區！
+    var listopacity = 0.7; //歌單背景不透明度，請輸入0~1的數字
+    var brickwidthpx = 250; //歌曲區塊寬度，單位px
+	var brickheight = 98;//歌曲區塊高度，單位px
+	var theVolume = 20;//預設音量，0~100
+	//自訂性設定區結束
+	
+	
+	//歌單區,格式為AddList('歌名','歌手','*Youtube編號','P主(如無留『空白鍵』)','Nico編號(sm/nmXXXX)','背景圖(如無留『空白鍵』)')
+    //注意括號『''』不可去除
+    //（如需逗號請使用『 + space + 』，不需去空白）
+    //*如網址為http://www.youtube.com/watch?v=Lw3CxYC4fGM&feature=player_embedded，則編號為『Lw3CxYC4fGM』，注意不要複製到v=之前跟&之後
+function songslist(){
+    //歌單區開始
+	AddList("恋は戦争", "初音ミク", "sdwUgNyWRZY", "ryo", "sm2397344","http://i.imgur.com/iP2N2.jpg");
+    AddList("炉心融解", "鏡音リン", "hldL6aJ6hA0", "iroha(sasaki)", "sm8089993","http://i.imgur.com/gRpGz.png");
+    AddList("ロミオとシンデレラ", "初音ミク", "QoJlhUvBNyY", "doriko", "sm6666016","http://i.imgur.com/9aEx9.png");
+    AddList("メルト", "初音ミク", "94Ow_T7rZgU", "ryo", "sm1715919","http://i.imgur.com/57Tm5.png");
+    AddList("初音ミクの消失", "初音ミク", "i4a6XxkhHs8", "cosMo(暴走P)", "sm2937784","http://i.imgur.com/1eugz.png");
+    AddList("マトリョシカ", "初音ミク,GUMI", "abfsvkbxCPQ", "ハチP", "sm11809611","http://i.imgur.com/rXN6W.png");
+    AddList("ワールズエンド・ダンスホール", "初音ミク,巡音ルカ", "yPB9ExbNYK0", "wowaka", "sm10759623","http://i.imgur.com/dBOLh.png");
+    AddList("ローリンガール", "初音ミク", "2EBydtRUgiw", "wowaka", "sm9714351","http://i.imgur.com/7It12.png");
+    AddList("ワールドイズマイン", "初音ミク", "C1bOR4S8TwE", "ryo", "sm3504435","http://i.imgur.com/xtELi.png");
+    AddList("サウンド", "初音ミク", "47Ipdu_cgFA", "baker", "sm1583280","http://i.imgur.com/cNORn.png");
+    AddList("モザイクロール", "GUMI", "oa6j32SAxhU", "DECO*27", "sm11398357","http://i.imgur.com/ez1tW.png");
+    AddList("弱虫モンブラン", "GUMI", "qRLPsGvya00", "DECO*27", "sm10393864","http://i.imgur.com/YBV1k.png");
+    AddList("ブラック★ロックシューター", "初音ミク", "gvgkC_WuEH4", "ryo", "sm3645817","http://i.imgur.com/2YH7z.png");
+    AddList("ローリンガール", "秋赤音", "KfMBK3JW5Ig", "", "sm9990071","http://i.imgur.com/ggjAT.png");
+    AddList("Just Be Friend", "巡音ルカ", "-Of-MKoh-vo", "ゆのみP", "sm7528841","http://i.imgur.com/L3UOr.png");
+    AddList("magnet", "初音ミク,巡音ルカ", "GVbYkbhHlNo", "ゆのみP", "sm6909505","http://i.imgur.com/jRk2T.png");
+    AddList("Ievan Polkka", "初音ミク", "a5kDcIJ9i_A", "", "sm982882","http://i.imgur.com/Poapd.png");
+    AddList("Chaining Intention", "初音ミク", "Lw3CxYC4fGM", "逆衝動P", "1266007007","http://i.imgur.com/iSJdu.png");
+    AddList("炉心融解(Hard-R.K.mix)", "鏡音リン", "d2gZrG-Negw", "cosMo（暴走P）", "sm7219091","http://i.imgur.com/gknSm.png");
+    AddList("Dear", "合唱", "-CohXyXsZFQ", " ", "sm3901884","http://i.imgur.com/ePz23.png");
+    AddList("初めての恋が終わる時", "初音ミク", "VI0we84LUUQ", "ryo", "sm5524166","http://i.imgur.com/nwmP9.png");
+    AddList("Innocence", "初音ミク", "9zRaknnbR1M", "KazuP", "sm5480792","http://i.imgur.com/FotdX.png");
+    AddList("Packaged", "初音ミク", "M8gIMfyV4Mg", "kz", "sm1136355","http://i.imgur.com/YoAfR.png");
+    AddList("Last Night, Good Night", "初音ミク", "C6QsIRxtszA", "kz", "sm4141643","http://i.imgur.com/nVIrm.png");
+    AddList("心拍数♯0822", "初音ミクAppend", "BPZ0HVwN18g", "蝶々P", "sm11834233","http://i.imgur.com/fFUpX.png");
+    AddList("みくみくにしてあげる♪", "初音ミク", "2gzXP7OAjMI", "", "sm1097445","http://i.imgur.com/n4aEg.png");
+    AddList("リモコン", "鏡音リン,レン", "NdUcS8i8TnM", "じーざすP", "sm13612500","http://i.imgur.com/cxbM6.png");
+    AddList("白い雪のプリンセスは", "初音ミク", "rHkxp8CTVLk", "のぼる↑P", "sm9797269","http://i.imgur.com/EFpau.png");
+    AddList("円尾坂の仕立屋", "巡音ルカ", "jIlGb-wZ7i8", "悪ノＰ", "sm9032932","http://i.imgur.com/Yvr1C.png");
+    AddList("影踏みエトランゼ", "初音ミク", "tkv7jYr7t6A", "影踏みP", "sm13434014","http://i.imgur.com/6rwqj.png");
+    AddList("腐れ外道とチョコレゐト", "初音ミク", "V5pIBfPD6Qo", "ピノキオP", "sm13275244","http://i.imgur.com/ELkNY.png");
+    AddList("妄想スケッチ", "初音ミク", "zGEQ0TJySPY", "40㍍P", "sm13252011","http://i.imgur.com/CVMPY.png");
+    AddList("ジェンガ", "初音ミク", "hz9l_VrCxP0", "40㍍P", "sm9558887","http://i.imgur.com/QzvOi.png");
+    AddList("アンチクロロベンゼン", "鏡音リン", "JgJgxUxURN4", "オワタP", "sm12154467","http://i.imgur.com/hRLUA.png");
+    AddList("パラジクロロベンゼン", "鏡音レン", "kqvCAhs81p0", "オワタP", "sm8269164","http://i.imgur.com/5XjDN.png");
+    AddList("Alice", "初音ミク", "CmA56YpUcho", "古川P", "nm7869327","http://i.imgur.com/nyBIx.png");
+    AddList("1/6", "初音ミク", "ieqH6Ik2tRA", "ぼーかりおどP", "nm6971638","http://i.imgur.com/qRtIz.png");
+    AddList("No logic", "巡音ルカ", "4KyRXxQ06Fo", "ジミーサムP", "sm13221358","http://i.imgur.com/fyFDo.png");
+    AddList("えれくとりっく・えんじぇぅ", "初音ミク", "idXnetgh2fk", "骨盤P", "sm4069267","http://i.imgur.com/kCjx7.png");
+    AddList("裏表ラバーズ", "初音ミク", "lkMgY6GKznA", "wowaka", "sm8082467","http://i.imgur.com/RKV99.png");
+    //歌單區結束
+	};
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js" type="text/javascript">
+</script>
+<script src="http://www.google.com/jsapi">
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js">
+</script>
+<script type="text/javascript">
+    google.load("swfobject", "2.1");
+</script>
+
+<style>
+    #nowsong {
+        color: #ffffff;
+        background: #5897F4;
+        font-size: 140%
+    }
+    
+    #nowsinger {
+        color: #ffffff;
+        background: #ff0000;
+    }
+    
+    #songpost {
+        color: #ffffff;
+        background: #c0c0c0;
+    }
+    .listbrick{
+		width:100%;    
+		border-color: #FFFFFF;
+		border-style: solid;
+		border-width: 1px 0;
+	}
+	.listbrick:hover{
+		box-shadow:inset 0 0 25px black;
+	}
+    .playlist {
+		color: #FFFFFF;
+		display: none;
+		height: 100%;
+		left: 0;
+		overflow-y: auto;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 2147483647;
+		cursor:hand;
+		cursor:pointer;
+    }
+    
+    .songlink {
+        padding: 2px;
+        background-color: #5897F4;
+    }
+    
+    .songlink a {
+        color: #ffffff;
+    }
+    
+    #bo_play {
+        background: url('http://i.imgur.com/QL2rp.png');
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+    }
+    
+    #bo_next {
+        background: url('http://i.imgur.com/QL2rp.png');
+        background-position: 0 -20px;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        position: relative;
+    }
+    
+    #bo_pause {
+        background: url('http://i.imgur.com/QL2rp.png');
+        background-position: 0 -40px;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        position: relative;
+    }
+    
+    #bo_stop {
+        background: url('http://i.imgur.com/QL2rp.png');
+        background-position: 0 -60px;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        position: relative;
+    }
+    
+    #bo_ro {
+        background: url('http://i.imgur.com/QL2rp.png');
+        background-position: 0 -80px;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        position: relative;
+    }
+    
+    #in_play {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-color: #000000;
+        color: #ffffff;
+        display: none;
+    }
+    
+    .fakea, .fakea:link, .fakea:hover, .fakea:visited, .fakea:active {
+        text-decoration: none;
+        border-width: 0px;
+    }
+    
+    #vol {
+        width: 60px;
+        display: inline-block;
+    }
+	.songname{
+	    float: left;
+		font-size: 200%;
+		margin: 0;
+		position: absolute;    font-weight: bold;
+		text-shadow: 2px 2px 2px #000000;
+		width:250px;
+	}
+	.singername{
+		float: right;
+		margin-bottom: 0;
+		margin-top: 80px;    font-weight: bold;
+		text-shadow: 2px 2px 2px #000000;
+	}
+	#playlistin{
+		line-height: 0;
+		margin: 20px;
+		width: auto;
+		z-index: 39393939;
+	}
+	.listbrick{
+		border-color: #FFFFFF;
+		border-style: solid;
+		border-width: 0;
+		display: inline-block;
+		line-height: 1;
+		margin: 2px;
+		width: 250px;
+		z-index: 2147483647;
+		cursor:hand;
+		cursor:pointer;
+	}
+	.ui-slider-horizontal .ui-slider-handle{
+		padding:0;
+	}
+	#listout{
+		width:150px;
+		cursor:hand;
+		cursor:pointer;
+	}
+	.fakea:hover{
+		background:none;
+		box-shadow:inset 0 0 5px #5897F4;
+	}
+</style>
+<a id="nicolink"><span id="nowsong"></span>
+    <br/>
+    <span id="nowsinger"></span><span></span><span id="songpost"></span>
+</a>
+    <br/>
+<div id="ytapiplayer">
+    請安裝Flash，開啟Javascript
+</div>
+<br/>
+<a href="javascript:start()" class="fakea"><span id="bo_play"> 　 </span></a>
+<a href="javascript:pause()" class="fakea"><span id="bo_pause"> 　 </span></a>
+<a href="javascript:next()" class="fakea"><span id="bo_next""> 　 </span></a>
+<a href="javascript:ytplayer.stopVideo()" class="fakea"><span id="bo_stop"> 　 </span></a>
+<a href="javascript:randomopen()" class="fakea"><span id="bo_ro"> 　 </span></a>
+<div id="vol">
+</div>
+<div id="listout" onClick="showlist();">播放清單</div>
+<div class="playlist" onClick="hidelist();">
+<div id="playlistin"></div>
+</div>
+<script type="text/javascript">
+function showlist(){
+$('.playlist').show('fold','slow');
+}
+function hidelist(){
+$('.playlist').hide('fold','slow');
+}
+$("#listout").button();
+    document.write('<link href="http://dl.dropbox.com/u/9342599/Voca/jquery-ui-1.8.10.custom.css" rel="stylesheet" type="text/css"/>');
+    $("#vol").slider();
+    var space = '<span style="background:#ffffff;color:#000000;width:2px">,</span>';
+    var ifpause = false;
+    var url = [];
+    var song = [];
+    var singer = [];
+    var songpost = [];
+    var nico = [];
+    var image = [];
+    function AddList(title, ssinger, u2url, post, nicolink, background){
+        song.push(title);
+        url.push(u2url);
+        singer.push(ssinger);
+        songpost.push(post);
+        nico.push(nicolink);
+		image.push(background);
+    }
+    
+    $(".playlist").css("background", 'rgba(0,0,0,' + listopacity + ')');
+    
+songslist();
+    var list = '';
+    var listin = 0
+    for (var i = 0; i < url.length; i++) {
+		list = list + '<div class="listbrick" style="background:url('+image[i]+');" onclick="javascript:b=' + i + ';ifpause = false;start();"><p class="songname">'+song[i]+'</p><p class="singername">'+singer[i]+'</p></div>'
+    };
+    document.getElementById("playlistin").innerHTML = list;
+    $(".listbrick").css('height',brickheight+'px');
+    $(".listbrick").css('width',brickwidthpx+'px');
+    var params = {};
+	params.allowScriptAccess = "always";
+	params.wmode = "Opaque";
+    var atts = {
+        id: "myytplayer"
+    };
+    swfobject.embedSWF("http://www.youtube.com/apiplayer?enablejsapi=1&version=3&playerapiid=ytplayer", "ytapiplayer", "240", "200", "8", null, null, params, atts);
+    function onYouTubePlayerReady(playerId){
+        ytplayer = document.getElementById("myytplayer");
+        ytplayer.addEventListener("onStateChange", "onytplayerStateChange");
+        
+        ytplayer.attachEvent("onStateChange", onytplayerStateChange);
+    }
+    
+    function onytplayerStateChange(newState){
+        if (newState == 0) {
+            next();
+        };
+        };
+    var b = 12
+    var random = false
+    function randomopen(){
+        if (random) {
+            random = false;
+            $('#bo_ro').css('background-position', '0 -80px');
+        }
+        else {
+            random = true
+            $('#bo_ro').css('background-position', '0 -100px');
+        };
+        };
+    function next(){
+        if (random) {
+            b = Math.floor(Math.random() * url.length);
+        }
+        else 
+            if (b > url.length - 1) {
+                b = 0
+            }
+            else {
+                b++
+            };
+        ytplayer.loadVideoById(url[b], 0);
+        document.getElementById("nowsong").innerHTML = song[b];
+        document.getElementById("nowsinger").innerHTML = singer[b];
+        document.getElementById("songpost").innerHTML = songpost[b];
+        document.getElementById("nicolink").href = 'http://tw.nicovideo.jp/watch/' + nico[b];
+        $("#vol").slider("option", "value", ytplayer.getVolume());
+    };
+            $("#vol").slider("option", "value", theVolume);
+    function start(){
+        if (ifpause) {
+            ytplayer.playVideo();
+            ifpause = false;
+        }
+        else {
+            ytplayer.loadVideoById(url[b], 0)
+            document.getElementById("nowsong").innerHTML = song[b];
+            document.getElementById("nowsinger").innerHTML = singer[b];
+            document.getElementById("songpost").innerHTML = songpost[b];
+            document.getElementById("nicolink").href = 'http://tw.nicovideo.jp/watch/' + nico[b];
+            var valuew = $("#vol").slider("option", "value");
+            ytplayer.setVolume(valuew);
+            $("#vol").slider("option", "value", ytplayer.getVolume());
+        }
+    };
+    function pause(){
+        if (ifpause) {
+            ytplayer.playVideo();
+            ifpause = false;
+        }
+        else {
+            ytplayer.pauseVideo();
+            ifpause = true;
+        }
+    }
+    
+    $("#vol").slider({
+        change: function(){
+            var value = $("#vol").slider("option", "value");
+            ytplayer.setVolume(value);
+        }
+    });
+</script>
+<style>
+	.listbrick{
+		*display: inline;
+	}
+</style>
