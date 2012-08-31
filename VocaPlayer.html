@@ -1,370 +1,637 @@
-<!-- VocaPlayer 0.7 --><!-- by catLee --><!-- http://catLee-area.co.cc --><!-- 2011/07/17 -->
-<script>
-    //注意！本區為自訂性設定區！
-    var listopacity = 0.7; //歌單背景不透明度，請輸入0~1的數字
-    var brickwidthpx = 250; //歌曲區塊寬度，單位px
-	var brickheight = 98;//歌曲區塊高度，單位px
-	var theVolume = 20;//預設音量，0~100
-	//自訂性設定區結束
-	
-	
-	//歌單區,格式為AddList('歌名','歌手','*Youtube編號','P主(如無留『空白鍵』)','Nico編號(sm/nmXXXX)','背景圖(如無留『空白鍵』)')
-    //注意括號『''』不可去除
-    //（如需逗號請使用『 + space + 』，不需去空白）
-    //*如網址為http://www.youtube.com/watch?v=Lw3CxYC4fGM&feature=player_embedded，則編號為『Lw3CxYC4fGM』，注意不要複製到v=之前跟&之後
-function songslist(){
-    //歌單區開始
-	AddList("恋は戦争", "初音ミク", "sdwUgNyWRZY", "ryo", "sm2397344","http://i.imgur.com/iP2N2.jpg");
-    AddList("炉心融解", "鏡音リン", "hldL6aJ6hA0", "iroha(sasaki)", "sm8089993","http://i.imgur.com/gRpGz.png");
-    AddList("ロミオとシンデレラ", "初音ミク", "QoJlhUvBNyY", "doriko", "sm6666016","http://i.imgur.com/9aEx9.png");
-    AddList("メルト", "初音ミク", "94Ow_T7rZgU", "ryo", "sm1715919","http://i.imgur.com/57Tm5.png");
-    AddList("初音ミクの消失", "初音ミク", "i4a6XxkhHs8", "cosMo(暴走P)", "sm2937784","http://i.imgur.com/1eugz.png");
-    AddList("マトリョシカ", "初音ミク,GUMI", "abfsvkbxCPQ", "ハチP", "sm11809611","http://i.imgur.com/rXN6W.png");
-    AddList("ワールズエンド・ダンスホール", "初音ミク,巡音ルカ", "yPB9ExbNYK0", "wowaka", "sm10759623","http://i.imgur.com/dBOLh.png");
-    AddList("ローリンガール", "初音ミク", "2EBydtRUgiw", "wowaka", "sm9714351","http://i.imgur.com/7It12.png");
-    AddList("ワールドイズマイン", "初音ミク", "C1bOR4S8TwE", "ryo", "sm3504435","http://i.imgur.com/xtELi.png");
-    AddList("サウンド", "初音ミク", "47Ipdu_cgFA", "baker", "sm1583280","http://i.imgur.com/cNORn.png");
-    AddList("モザイクロール", "GUMI", "oa6j32SAxhU", "DECO*27", "sm11398357","http://i.imgur.com/ez1tW.png");
-    AddList("弱虫モンブラン", "GUMI", "qRLPsGvya00", "DECO*27", "sm10393864","http://i.imgur.com/YBV1k.png");
-    AddList("ブラック★ロックシューター", "初音ミク", "gvgkC_WuEH4", "ryo", "sm3645817","http://i.imgur.com/2YH7z.png");
-    AddList("ローリンガール", "秋赤音", "KfMBK3JW5Ig", "", "sm9990071","http://i.imgur.com/ggjAT.png");
-    AddList("Just Be Friend", "巡音ルカ", "-Of-MKoh-vo", "ゆのみP", "sm7528841","http://i.imgur.com/L3UOr.png");
-    AddList("magnet", "初音ミク,巡音ルカ", "GVbYkbhHlNo", "ゆのみP", "sm6909505","http://i.imgur.com/jRk2T.png");
-    AddList("Ievan Polkka", "初音ミク", "a5kDcIJ9i_A", "", "sm982882","http://i.imgur.com/Poapd.png");
-    AddList("Chaining Intention", "初音ミク", "Lw3CxYC4fGM", "逆衝動P", "1266007007","http://i.imgur.com/iSJdu.png");
-    AddList("炉心融解(Hard-R.K.mix)", "鏡音リン", "d2gZrG-Negw", "cosMo（暴走P）", "sm7219091","http://i.imgur.com/gknSm.png");
-    AddList("Dear", "合唱", "-CohXyXsZFQ", " ", "sm3901884","http://i.imgur.com/ePz23.png");
-    AddList("初めての恋が終わる時", "初音ミク", "VI0we84LUUQ", "ryo", "sm5524166","http://i.imgur.com/nwmP9.png");
-    AddList("Innocence", "初音ミク", "9zRaknnbR1M", "KazuP", "sm5480792","http://i.imgur.com/FotdX.png");
-    AddList("Packaged", "初音ミク", "M8gIMfyV4Mg", "kz", "sm1136355","http://i.imgur.com/YoAfR.png");
-    AddList("Last Night, Good Night", "初音ミク", "C6QsIRxtszA", "kz", "sm4141643","http://i.imgur.com/nVIrm.png");
-    AddList("心拍数♯0822", "初音ミクAppend", "BPZ0HVwN18g", "蝶々P", "sm11834233","http://i.imgur.com/fFUpX.png");
-    AddList("みくみくにしてあげる♪", "初音ミク", "2gzXP7OAjMI", "", "sm1097445","http://i.imgur.com/n4aEg.png");
-    AddList("リモコン", "鏡音リン,レン", "NdUcS8i8TnM", "じーざすP", "sm13612500","http://i.imgur.com/cxbM6.png");
-    AddList("白い雪のプリンセスは", "初音ミク", "rHkxp8CTVLk", "のぼる↑P", "sm9797269","http://i.imgur.com/EFpau.png");
-    AddList("円尾坂の仕立屋", "巡音ルカ", "jIlGb-wZ7i8", "悪ノＰ", "sm9032932","http://i.imgur.com/Yvr1C.png");
-    AddList("影踏みエトランゼ", "初音ミク", "tkv7jYr7t6A", "影踏みP", "sm13434014","http://i.imgur.com/6rwqj.png");
-    AddList("腐れ外道とチョコレゐト", "初音ミク", "V5pIBfPD6Qo", "ピノキオP", "sm13275244","http://i.imgur.com/ELkNY.png");
-    AddList("妄想スケッチ", "初音ミク", "zGEQ0TJySPY", "40㍍P", "sm13252011","http://i.imgur.com/CVMPY.png");
-    AddList("ジェンガ", "初音ミク", "hz9l_VrCxP0", "40㍍P", "sm9558887","http://i.imgur.com/QzvOi.png");
-    AddList("アンチクロロベンゼン", "鏡音リン", "JgJgxUxURN4", "オワタP", "sm12154467","http://i.imgur.com/hRLUA.png");
-    AddList("パラジクロロベンゼン", "鏡音レン", "kqvCAhs81p0", "オワタP", "sm8269164","http://i.imgur.com/5XjDN.png");
-    AddList("Alice", "初音ミク", "CmA56YpUcho", "古川P", "nm7869327","http://i.imgur.com/nyBIx.png");
-    AddList("1/6", "初音ミク", "ieqH6Ik2tRA", "ぼーかりおどP", "nm6971638","http://i.imgur.com/qRtIz.png");
-    AddList("No logic", "巡音ルカ", "4KyRXxQ06Fo", "ジミーサムP", "sm13221358","http://i.imgur.com/fyFDo.png");
-    AddList("えれくとりっく・えんじぇぅ", "初音ミク", "idXnetgh2fk", "骨盤P", "sm4069267","http://i.imgur.com/kCjx7.png");
-    AddList("裏表ラバーズ", "初音ミク", "lkMgY6GKznA", "wowaka", "sm8082467","http://i.imgur.com/RKV99.png");
-    //歌單區結束
-	};
-</script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js" type="text/javascript">
-</script>
-<script src="http://www.google.com/jsapi">
-</script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js">
-</script>
+<!-- 
+	VocaPlayer,aka vcpr
+	by catLee
+	http://catLee-area.co.cc/
+	leemiyinghao@gmail.com
+-->
+<!-- Settings/設定 -->
+<script src="http://www.google.com/jsapi"></script>
 <script type="text/javascript">
     google.load("swfobject", "2.1");
 </script>
-
+<script>
+	// calculate layout size
+	var iPageWidth = 0, iPageHeight = 0;
+	function getScreen(){
+		if( typeof( window.innerWidth ) == 'number' ) {
+			//Non-IE
+			iPageWidth = window.innerWidth;
+			iPageHeight = window.innerHeight;
+		 }else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+			//IE 6+ in 'standards compliant mode'
+			iPageWidth = document.documentElement.clientWidth;
+			iPageHeight = document.documentElement.clientHeight;
+		}else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+			//IE 4 compatible
+			iPageWidth = document.body.clientWidth;
+			iPageHeight = document.body.clientHeight;
+		};
+	};
+	getScreen();
+	
+	//vcpr init
+	var vcpr={};
+		//Panel Icon
+			vcpr.panelIcon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAA8CAYAAACXdFS3AAAAAXNSR0IArs4c6QAAAAZiS0dEAHoAqQD/sYrKcwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wIHQgtGuhwQFoAACAASURBVHja7X17fFXFtf93Egim11vuoZ/8isQLcuQhWvxJ+dTWXrQ+gsbSS8WSgiAPDQaCvCUkPER5BBMFRMBAAigPRUisVotFeVtRq4Ur1atXKsGK5qJyTUp/yCM9s9bvjz3nnNlzZp9nEuxt1uezP8nsOXuv2TNr1qz1nTUzQCt9kygjxfxWSp76AsiMkm4lD8purYLzToMBXJ1CfivFpgEArrLcTwcwO0q6ufiez0HqBQD9knlYaP9vAyABzAHw3nn6mNGWUbUewLPN8GwugEHN/D0zVRlMGgigo/r/AwD71f/DACwE0AfASctzsfJbmtKVzPy98E0H8CGALADXWuQ8F8DlAJZ6pFMpbzS+56P+apT8nwJwM4A3k33ZNgCsro0Aup2HDzqplSF4vdtMz5ZYft/UV2cP3q9pv6kwFAMD2OLxXKz8lqZ8AD/5O+JbqNX7Z6oj2/rBT6Kk0Ux8W1JpPG3I6V+Ua5ay4mAA55RQd2xVHC2uOBhAQRTF4ZXf0lQC4HSy5m4L871QdVq9fd6y4BhXATiuue5mOlGKl29L0VoPWf0qEVeqTQwfqFC5AI8BKPuGmMf/KLRMuTAfJJnvoi49Ltob9kwZzEhLT0uv//jwZ3G7axd36bQgLU1kMlgCQP2Jv/zo61OnM9WgczOAt78pfC002dL5rwawAsAY7d4hAK8qq/smSzpRipdvS8lUvkdeBwA71Dcm5EptizF6/kVp+gtbLY4WsTgYwPvGyBQrPxp5lrNLj067oz14SY+LX4jjW//iMWKdL75mp/hLlHf0t1gdrHUyMx0vJcq3OWlenDJ7HEDPplQc+osL0TxTg62KI/IdlQnkJ6U4APC/dvuuddS++NLvvpXA934JoPc3hK9OS2I8/5Hy/XXarjp9R490PJQM3+agogTl9rNEMM4dCb78KIARrYqj2RUHAxgSZ37SigMAd/FfXKY/0LV754okvvkTY1A5X3yD1FnhdbGeH208N8hon0GW9opGyfJtapqQpOx+FkV+PYU5ketdONOLrYojdcWRH8Uc7xpHfkqKI71tWiDRZyzl6PcN4RukjXG+40PL7MNnqvN3s6RjUbJ8m5JGpyi/R71A4TZNULjecAJJ3gZwH8IxCa2UOHm5f+3hTME+FSP/WgCNth/4e138ejglAECeazzbqa72RKgTyL9ReufuF+0/9tHxfh0v+c7hz//8ldthv+ifv0xLSzsnhPOCr/969p9P//Vce5X9OYBbFZh43vlqsjkszrrvCeAahOMZJIBNaoApAjDWko7WJ5Ll21Q0WM2gpEJdAewDcD2Auqa2OMxrB5KPkPtHtzgK46jbaPkPJ1PpbTPTA6HRv0369LS0tIn6e9u0Swukp6cPj1KHnyCJuJ8W4LstwfZ6yHh+gGbRZFrSzcU3VRoQp5sU7/U+osSevNbEnWZLouhsq+KIqTjiuXITlTJfh38ZD4C/06n9YQBIb5vWqL8z81uZd0epw/eRZIxDM/Ptl0Td7TPekQknXiSII5np5uKbCt2olbEpr3e9lMdrzcAsoMyl7FbF0WKK48t4QS2dul1+yRYA6HRJ1qv6+y7pmf1KlMdy4Uw5Jk3NyPeNJOvOpODszlqPdHPxTYauaSalEbzeUW5xk2Ac0ShdAXrDAFQBmA/72o1WajrKghNSfD0SWM9x5IM/D/V1+Jfx//3nE9cF732rfcbpPx+uuyXKYy+nWthm4jtQdaJEqb3lXtC37+aRbi6+yeBjgxQO05w0GMC6Ni0kzJlwIugGwYlMO9Lav5uV+ikAryyRh87RaddirnRuN9UDa21Saga+yc7ypUe5l+mRbi6+iZKEE/HZ3KHsx1rCVdHj4GfHoVlbXZWmq++EwMpLL+/8iv6Oi7pk7QOAzl2zFzenwDcT325JgoNfWd51QOU955FuLr7JUG4Tg6K2WJnsllAcX6mR78Jm6vytiiPyOqcAsripbUbbO/V3tMlIOwcACrTkKI+mtDq2mfkmE0T2vvGODlpHLLGkm4tvKjSgmZSHZzRpUyqOLwFMQ+LrWloVR+o8CxP2I7+dcQ4A33DDDVxdXc1nz579uq6u7tOCggIGwLPnzmxk5lrj2rlp06aXjh49SqdPn67T7zPz7YnwDV5paWn3Tp06taK6uprr6+v50B/fkcxcAADMPD3IY/Pmzdvbt29/+s0333xc4zvdeH02gP+XYN1tN96hR+p2taRtlCzfYi1dD8Cn3udT6WBecZw4RKCJ+7NnSP9rTaSVJqTgZ7UqjujvezVGvmc49KWXXfJ48PL37LLc36PLo92u6PJS2wvSJQAuLS3l2tpazsvLY5/Px3379uXKykquqKjg2tpa9vv9risnJ4c//fTY32z3mXlnvHyD13c7d/gTM5faylDzXPX/HP/8+Jkgj7KyMi4tLeWPP/5YBu8xc63lsx9KsL0WGs8/p+5v80h7UbJ8D2j3gviUrlB2JtCXhjSR8oi5V8drKSqMplj41qo4vN+1G8C9MfKj+f6e5bzqqqu4traWfT4fA+CcnJzQ/5WVlSHFEczLy8vj4uJiz/vMXBYPX/1i5qviLYPP5+P6+nqXQvNQHB2Uuxxvew3Qnu2sOl4ATkCjmY5GyfLta9zvq1kb9QD8CfanESnK7+l4ZomSURxH4Wwo01QrZVsVh/cqyvZx5CMZxVFZWclBt6SgoICZeWd1dTUDYL/f7+q0tbW1XF1dzWVlZRH3n3/++bO1tbXrmLlLIoqjy6UXr2HmSr0MO3fuZK8yBH+jK46zZ89+mmI7nzYs5SVG+yyJZdU1EV/TZUl146b8FJRGXFhZIorjQzgLaJp6SfA/uuKY7GEq9owzPynFoXfKnTt3MjPn1NfXW/Nra2u5trbWqjhqa2t52bJlJ48cOdItXsVx0SXf+S+FYdTqZRiZP+yYrQx+vz9kiej3Pvnkk795DGC2Hbhs19PaM1kKp/hMPW+m46Fk+MLisjCA6hT7VaLY2blYU8tpCRbgMIC7AFwGYD3Oz0a1/5sp0zI3n6fqPZ78pOiCzHahoAmfzwcADT6f76jf71jGDQ0Nod/2798f/fv3d93T7x8/fvzbl156aVw7W3XqmnXo+J+/6mXe9/l82LD26UHnGs+dtZWhuNjBB8vLy8M9PSvrS9iDP07BCTyMRau0/+epuh6qnjfT8VAyfINgqM+4509RrlbBWYAaD0kAIwG8GO1H8QaAvafAms2tfbtFaUoMQCxWfhjqvzTrjyETgMFCQKSJ9K/P/PVvNZ0uyp4YFE7VQX0NDQ3+o0eP6srEkWC/Hz6fD36/H+3aZTQGR3n9vnJhY/L9749PLLOVNViGdhntLrCVoaCgAOXl5aiqqgryQ2Zm5tkon78OTliAV2zLHoRXdXdT5v1Mdc9MJ0KJ8A1SmaYoDiqco69yYcpTkKWlqq1iLagbA2BrIi+2uSrvoPmPEGh1VexlqoxR5sqmqnQTXzAxDt2NqK2tZWauZuaC+vr6r2z3m7MMfr+f6+vrvyorKwvVcxRw1Jxl8DLL9Y69D8CTUdKJUrx8oaxHfQbFb+AcOU3Q3HOjyOuEZF6oC/OBFlYYrYrDXabdHv56rPxkFUfUGQ2L4vADgEVx+Ju7DEHFcezYsXNB3nEqDqiB0GyjuVr+aDh7y6R7pJOlWHyDLopNSehgaa3FjUmGFlrKU5Lsy16Ds7IvF+ePrtJMs+B1eQs8+02hEjgzJFlJ5qeiPEoPHDgQ6rA5OTlcXV3NzFyhd1pdQZw6deq47X5zl+HUqVPHT5w4Mbe6ujrWdKxJuUZnecEARGs0hWymU6FofINUDXu8hk8pjKa2NPX9UBem8qKeaKXzTYUxlF2s/FSVx+0q8rNe/c1T96fbIjS97rdUGZLkv0+z2nSweRrcU9pmOlXy4ns+aZm6WunvnNJTzG+l2HSNwiz0zpsN9zSrmW4uvq3USqnTfU9zVLN4eoz8Vkqeip/hvsVbOFNPl2jpVnJTKI5j4npuPa3+PBNJDJy6iT1Po5cUPb+VYlPRZh5Q9DRHhIxLxiEiTAu1BeOQ1NKp0ozNPKBoM39jTqsveYYzip/hF4qf4dROqx//JG8DQ0JgTsVd4rycpn3veh4NIAPsFIwFIID6laNFzNPqJwSfdZPnsxPWc+i0eqH72Cod+iu0fDZ+7FGhHP5/5vJRImLHs0kb2HVa/fJRYr+6P0wAC1mgz/KRIuK4zUkb2TmtntFn+Shx3o/jnLKJ05eNEC0eBDh1E6c/mgTfqZs4HQIfCiALjGuXjnDL+dSnOFcwLl86QiwFgPue4lzW0ilYkung8Gn1S+4U5/W0+ulPc7oQqGHGIAGcYuDmxcNFQrust9FGMwAYCMbAcet4E4D5q/NFi+7URYTHAHxb76TMeA/As/E8y8C3XT0X3s8S4SoGCmAqBl2TGGmh7rG6L4Rb0URoY6AUlq0SJaMIjH4QgGCsggoCUm3QVTjI+VCLRQIAXSHs+S1NUmL0xA18ZMUo8WoLy8noSRv5yPKRifElRgEI3VQDbZ+8kfs8NlKcCOY/eqd4efJGnjB5Ix98bKR4dYlKT9nIB5eNTP4bpUQBBLop+dk+dSP3eVTj25I0bROnE2MjGIOU7F4IYPu0TXzT0hHiYMKuCpEjuJKAAGGEJLx/zxquGLOWW+y0eqmVQbLzlzixZ0k9Q+r/aL8P/kYSIKXiyeF7xM7lKpe6HyqfcZ+M8kfjLSUQYJdgB8swpHBdZCBVsHxSYkjhE3zeT6uXhCxJ2D7+SW7R0+oD7PC9d338fCes5wslYbYM1382EbZNWO/GMYgwRxK2TFCuO7GTnrghOVd+0ga+kBizyelXkIxsydg2acP5wU8ko1IShhmy214ydkzeyImfVm8R8gwIFArC6Lsr+TEAZU+MbV7zONjRbaN4HBUSaTHE+j0MJpqLBM2qiFmgoEVCxk+Ft+IAa++2t8GygrW8v2qM+EBXLMwhy2dZwTreX5Uv4jqtfuxa3svu70kDUF+ZL+IO9Bu3jhfAmRWQqg5/JBiZDGwbt45vXp0v3rY8szdYR4IBFkgDo351AnwLn+AFYGRCOM1GhB+pcmwrfIJvXnW3eDsOJTdZqG3vtHqIODV+xWhxaPyTHDqdfsUolabkTquXhMkskC3csnNeTqufsJ6XESHfQ5w7CGDHxPV804rRsV2ptIjRTBtNJQEBRqYklBDhk9GruWT0am620+oD7Ghl0kf+RCwOo+ySoisO3UIIWioBdlwCMqyJkEVCbh6hdyjrQS+7l8UT5GWW0Sh7JhFq8qvCI1NAup7LJImaMVXxjVyScT0RrpeE69X/1xHhtjFrmMes4ainxt+zhl+4Zy2zdEbj+yRhhiTMIMZ1qu7aS8aOe9ZYQMcgT+n8JYnrJOG2gjXM96yNzrdgLb9QEOTLuI8IM9jh7eI7dm30kXLsWu5AjCKXRSlDbZk/di33N8pcRoQbx67j/FCaceM4lU5A0XaQjCKS1r6VP24dt9hp9eOf4HmSMFm3NHTLXJUtSzJ2jH+Ce8atOIg8XIVwR24fIDwkCR+NqODCERVNPzVodqhgIyfk5hiV4clLar8PuwDuirS5P5oLZasvGaerIm2KQ0a4QJcThQN0yFRcjMslxxfAY7pwxrfdeFcVW0ftuyv5LUkYaCpOYkOZSqcT51dxbwNXcLt87HIJb8z34JtfxW8RYSBp9REgt3KWBJDiO8bgayjN2VKivdQUBukDB6NizBoOxchU5otDkvAyEZbcs4Y7BtNSpROwNmYrN8DhK7V2cK6KgrXc7LE5Y9dxkSTMjZBZrf1Yqj4h0VEydo9dx93iszgIGaT5/REjbjjdkQgVkvDhsJXcpKfVm1hCIhhHqMy6QpBx8pJhZUHKcnBZExzCfmBqbFO5eCkFK77C7u/TraxgJ5GMgpGreIgXBiQJBaNUfryKNcIyc4TmB6NWuXbuwqhVXCEZV0uO5BswlKiqqyxJ2DZ6dXhQsT1ryNYPRq928x29miuIcbUp3GZ9B8LfkSUZ2+6qjBzM7qrkzpIwwfWOSNyqmySMMJRNlSS0l+SsKZHkTseiu6u4MzEmmBhYLL5NTWOqeIIkPOwaWNmwuCO9jWxJ2HfPGu4cj6uSaZriER2EQ+4LJKGrZGwcupzfHbqCBzal4nCN+jL+Z01LIZrFYbobAe15Ig8lZlg1ETxlpHB7oPuOEpLOX035ZZoWjuJXeefj3DWYb1FWlcMf564x60cb+azCzJhu1FFhSBkbnZ4oEhyWhJOSMHz9ONHosqK8FGvYEplu1E9hhBxqFmGo7NLN98mxotEyoCyUhAxTngPkBsOJ3Iu8pMSLklEnCfmjVnM3yXhREuqIkD96NXeLYyBz8bUNKipd0lxK465KHi0ZK8x2DmgWnCnDWvtmS8K+uyvtoHCa2cB6pwiY/pDURvWwtuotCS/kPcZv5T2WGrpOmjYMaKN/vOCorfPHo6RMZUGGRaALebDzBU3mgPHbALkFPKbFQa77GVaXUaJ9gLFFEr5lukxqRG5PjC13rPR2HyXj9QDhdcl4nRivS4nfScaRkLJz3pc+bCXvB4Bhj/NhinT/vpSET4nwmWR8JgkntbzPJeP6TePFfpOvVHwDhNeJ8TsiHDFmr9KHP+7wHf44H7ZYVl8S4VMCPpOEz4hxUhJATp19ToTrNxaKiL0y7nyce0vCMCLXjFW4faTLCus5ooJD+2tuKBSSCJskI4MIRRvGCSkZmwKMDEkoiiaLIyq4t2Rn5iICE5MRstRzxCq+pqmVxshVPFgS1pLd0tGtNafvSIuiJnSVhH2jVkUqjzZ6pw3CrBGTE2aQAmszEDpSLPDaL5bxTgAzfjVFHEpivjtiJkIkAI4Ko/AcxwyOdbJEm0lRMwHhb9ZnWYLVQ+o+EiurGU8mWX2vHkcS/v9qACdBkWVUZbsaAgsBzLDxfGaC8FTqQ5ZzAMF1MAK/HrKcJ0qJHnrRIDBq60Th2uZuyAouAeMhMI5B4KatEyLjfjbf68136AoOCCBd1e+v71jBEyWjR1C2ICCZMWqLwfeOlYqvc6rYTc9MtMcbScJDANKDdSQsss3sqsqBAN7Ung8qoyHDVvIUYpVmJ715gjgTjW+Ih9Dald2yqWTWxTdVGv44DyDC0yyQrtWlW56UDJIm23pMU6heGN0gsOPOCr7+qfHh2BMd43CZLuQF+GnmeIAjYyEChP6S8M5tS3nLbUs5oRW3JiAZLFO8GIfFb4/Ni90AHhnWQMC4Z5raNt9V9yFjWUeuOA7yqO9wffTXzHsXYKv+Lxq8jBPeFkEyJil+f9o6USyWjCWGK1ZgKg0NV/qAGD/eOjHxYEHJmKTq4U9bJorFAcYSki6cp2CLha+ysj6QjB97KY0hj3E/IgzwsiYlRZruktw7ekvCHsk4owDOgZKwhyTOSHbSVr4ruB8xBgRn6CLcWbvL12QWxx0r+EYi1AStV2aj30rtf8vsoA3HIwek3z1sJWdZp2MjZg1k5LRlhKnHRucLN8gQSXj/3xfz2oGL4wueIUNhJBwAZgJpHFvRBAwBMpUlWUAlE5V2uTOaqxKQMb7TAHCj4ieaoEWUWWElqvwbBy3lhE6rf3ayqJCErc9OFj0HPcqvEqFtIOyK7nh2snjCo84PEePamsmiLhkhr5kkKoixtXqS6PkLxVfDi3bUTPLmKwnXVk/y5htgPCy1zkC26Xo28CR2b1mwdZI4IyXeU8/03zpRnAkw3lPt0N+jbR+WHu1nw8xU2Zpkq4RfLudrJGMbscLCpCYrWqgD2cIJOFLeDTertyTsGLqc20cGgJlBTzYXJaKm4A7Jdns36QDyBTBswCNcxcD83xaJ+mid3+tF8eAjHDTBVFmjPRqgyACsUKASwmHlQXfFJBaaK8WaOWqpF8/vZPdPzAA4I1jJO7ZduycEshh4euASvv7F++Jfz/H8NDH050t4PBGu026ffmGa8Dw1/rmpIuXT6n81RQy9bQmPl4zrtDo7/esofH8Vg++gpTyQCNfAo31Ddam7jM7yhvYWRVCn2rtbMK1eGQGQ/uJRHhi0HiLWO4WXULhcYNWEKe/78YtlnCEJg4R5Wj0bMmW4LIIs3cxwX1ywgTBOqycZ9r0EGYu7IoXT3TEt/qOxOCx0Wn1uGd/0comHT8qJKQuzMzK09SSIHkBqzngIRGIjIcxEe5nOw1U3JjajBNOLty3INRqY66pgDgl6JNzh3EvqtHpJMBdzTW2J4CTJWBpUusq3npri+wbqgyCzhkEFZYOt7ZlueVe6JsOQ5KSFZV+NAGNgBEaFsMIQGr5gNH7KsRxEzmn1DGQKL0VpKAy9j7LR14U2GLIb7zzmtjgMCyP4gKkMQkIL438dyIzU9PUAlgrGyh2zvMPWvUbcePER18MxNIfuArl+SuFwceGlKPSQdLgFUrdSOArGYfswL9dKBMtlgFdWxResbxF7YaBOt5bzK5LQTrMeX/3tDFH104d58W9nCOvuWj8t5/TfFqe2OnbAw/yKZLTTrLVXX5ohqgY8wotfKrLzHfAIp79U5M2XCGVwTjHL0EL046GTFmWareqjTslNtqr7CDeJpOIrjFXaFCkz7C5Tyks5np8m5MDFfALAC0H+QgH3EYMO3Na53n9Zl/vIOjsG4McujIPYAoyaU7PSPQ1I4eg9uMJqw35cvSTMIEKXnTNFaTSlETFFGiMWwgaY6fP90SI3dV4RsQgGVsMegKV1essIQiOKwdvAYcxQdxemYcFeIuI9nKuRCHnbZ8QPVt5cxncS42btXY2/nSGuv6WMD0vpfR6HZIy+pYyTPq0+t4zvlISbNdlpfGmGuD63jA9LisJXYnRuFL7bisQRSVhniTPxvhz+nxvKtIMKN0CA8PZPH+YOktBbyUhExOtvisQRyQ5fzyhse5Dj501hub04XbwsGbeTIwOhPkoe8Tek4x42fM0tb3XEuOmF+xxcyRXH4Zo1kAY4ypYwdIpcI6IKd4II9xGhy57Z4pHds0Vch9hErDfhxNaqBBJcHWvrhFaQyAibdsVScGSYu15+T3CUI5VLwABrI2JN2CP6090WU16ZKfYkaOaGhD3fX4MXp5wL1NXVfdr29Ec9JAOTHlhtPa3+zuynbl/1y4/3JntafaiTheti2uAHDlTc7a/psfmeBnidVj+y8zODibE92mn1klAqGaekLWjPnEUL5x0zrNJcImSo326VhFwtwnqrhyVbSoRTtiULAQOE12TqWG45F+eWMeeWM+eWc31uOfsAILecfbllXH9reSgv6mn1LxWJlyRhuCTIUAQy2WcsrUsH2CJrhBMBxq2/mR4ejNzgqA1s4xjWv3CZzXVCoIwZ6/Y/YJ/jjuluGH583MJvuloagBnNtQlhIiJsUlpjR2wVYMM5OLabFfxO83VkmJOku0xO2X4HxnUQ7ngPzUNctXe2WGXjecNCftwVl+FcPQDkSkLadXgUI+/4Oe7ZkofVS/AtcKdvDcmugpS7cMstt7S9qRR+FyAM+DeM+klg1IZ/FRDopL3bv3uWg50CwI2l3nyJkMZhGfto9yx0OnrUV1iwJQ+rPwKE8KX98vdVlTXPVS/6/IvP/+nOdR0vAICctGP+H9Oj6Nhx0Lj+i5x37JqFQgCLg4x2zBR1Ny3ilWCU6Jgba4C2paEOGspnsHropV2zxMc5i3hJsH/umiU+ttXzy8Wirv8iXsnC4eu5YtstHAd3zhTlNz/EeczoK5ydzYsBlEhCAQCfqqNdO2eKmIcybS8Wz95cxsPBeBoC6S7YQYMbzJggNvq7+uckgFtfKXavmHUFgHGM0T0CkAt3sjowSiGw7o0HRGPSoBZF4gaJPhttAsj8vRX89QA9haVi2Zh1YSPYhqO4VbZChgBqE0dy3r1HCDwH4DoT4FO0B8DEKN87HsZ2AXpbjhz+c9z1tB+6Utr8ZQGG/Z8qKy7jP/ssGhu/38Z2Hxh80MUX7tkLV12pzL2z8cujR4++k/+M31X/z3xZgDtQ9Z3TX58ODW6vyGI8N74BDQ0NaYHoU+6PwDmsuYNnY7ixq1AQ1g2l3FkSBgon+G3ODaXcmQgDVVDanBiy5fAV6GCTL30DKHXrTfXcWAAH1E+LbyrlGmIUq/ZuEMDYePvDjhKxNWcRZzBjoz44huRXMxSYPeHAM2DcumtW5AY/abYYAtMvkpYFTeq3H0uJsVLC/8Y8seqNB5NXGsEy2HzAeC0OW3mjxnGQsW7DtmGP4VYETD9RuoPhzPgOL4vD5orZ1s6odx6RjNslgcyy6vm/m+sNGEoDe9FN6GHfrcK4dRLEwAVnPsK++7Hr3p41kBLY9HmBq76eGHYU9/asQY8La8Nul7o/5Xu/Pjfn7u8/Ae08VFv9WdY/rQVQWLhOQhKQcfojzP7hLozvUQPJwFNfFLhwOEnAHYv/x1Wuc+fORYTb750j6iXhEWvoN0WsfTlDhD1auScTIz3AqNozWxwiwuQAIz1AqNo7J3pU9J45op5Y8WX390s2XAfGGWKH7+7Z4qBklGiu7E4p4VN9rmT3bHE0kf60a5bYRIQxUnrEB7EHjqfqQzJ+tmuWfUtBdwCYNMA/NvygcIUflhJ3SUL3txaIqrcWpKYwIjqzsVovEXxEj8GPFjzmtWJR930Dxk5dNiBVGnuHmCBzPPiK1gYZFiV2UhJ+9saD4mTQ3zb2SzlJhJ+9/kB04Dm014gFG8nJycGptt0hCSi64RMAKM/JyXGtpQloSrxv374R2BIAXHnlle1+85vfDK6trW1rgu5ROuyHr80V9wDI+TqjO0iVoXRfr09zcnJca370ej2V0d1174svvujY78HItTpEWEnOYrWIdjMGw+dfvd9xr/vN4yySKJCEOpKY0W8eZ0lCATmL3GbEKY8rJaOOpGUlsR6sKPH8vjlht37fHFEuGQdVWX1K0dTsmyOqkulTe+eIdZIx3goIy8joUZVuJMLQvbO9sbIIxBLnqAAABaxJREFUi8MD7AymDwcIdx0oFZcdKBXrDyxs2o1qTSUV/Li4FYfFaoimpIg8wF6zItmtlV0zSxSx7aILCIvG27SKiJFpWE2SCHm/ny8Oq/rJNLY5lCSR96bKT8Sa07/9gsx2jcH21k+rD95raGgIlXnYBj+GbfDjv/56qavNhm3wY/h6P/7ji2zXafU2haxFMR5640HRy/ytz+fD3oXZg841njsbLGNDQ0Mo/2ftyiEJKFgjQ/yzsrK+3G+xePc/KE4FJOZHmYUKytsqrX3mSacthu5/UJwKpRlD9z8QH9D/2gPiFBHmS7ZHY2r3XJjUjx9kH0n4DMs/pRPyfjdXrFIbIblAfTM6XNW1lIyRr84V8Z1WT2SJWAz/7j0AZX8sE816Wr1eBmY7phQPZsFxPBjRqQ0swwtj0UAjxzdku9ss4ok5MaJLg9G7ISyAMOXgIrFTz9frRwBTDpaKnXHWzx+1IChmASEYX0OgptNF2RNJRp5WL8k5ptTn84XBc4Vp/Nsl9WjXLqNREjJ0uObfLqkHtNPqJeGPwqwaga8B1PxhgVhma0P9tPrgPZ/PF7Igx44twHNLgb+27R6K/ox2Wj2xOjWevU+Nf3u+s7r2h3O5W4CQL4CZby0Q+394P3eTjHyQk05oIJRYJ4AiBroJYQkFYux5a777nSoGxa9qyzmtXqDvj+Zy8e/ni6RPq3/9AbH0mgc4Qy0OdHcutxyOeXOeiHlafUhxmIvJlJAdAmP+fz4snkcLkLREc1K8SoejotYxg63MSELPzm9G/9njwqICtFJq0bfC4/sZVYceEittHUv9LCI/Gh0sFd7b6y3gXpnnPio4ldEd81/pgpwcFO/atQtS5jmAp99/VDL8YODZ/KPw+/01QMGuhoaGhyQ5AKB+X4iwWX1goYh3A9xdmec+Kvi6bXcs3BEuA3EeOFiG8Mhbf/s/lXd49lRxXC9+e4GQfefwHABbXMrf+dMIEQYdFd6y+cBC8YiSk7XgcDoRemuBkD+Yw3MY2BIxqcJoNMHOH8zhPDWLAgC7AIyFwAEQfEKg7Af388E/LBC7ku1fb84TZVffzxkCmMemsDv1MfHtBWJ9PO9yBYBp5uRBSbj9P8tFn5ZSGi4T3phnTsRVMU3yWKa7bUVqgC1YRqRpG+m6aK5NIAo+o28kQ/Y9R/dIipwh0dypPcTeMyhJ0Kr1hemQBJxs0x1XzUTOwnfyIAGMu6TKFXuiqCSoHAx3q0RXGomW4clx6QiwU4Y+s5Cz6J08SALGdq5ytTEADB8+rDERAP3gQrGVJA5Zgv1KDy504hP6zOLRClMaAwB9ZrrTydAfFoqtknAoFBcVXp1a+oeF4biI789mnyRUav2w/A8LxVEilGtuRGXf2ZzSafVvLxDzJaFUX2Sp6mTm2wviH4jaGKPZmwzM/9OS1BcvJYlx/ASs9k9ASBOeiVNx/ARqDwRNkXo++/7DogwJruVoKnqvXFzraYkARyAw9P2HI/116SyTPiIEhr5f3jSAtGNdikPMvOiJwQdnjarpGxqR5/atQV5ewSoAt9g6Z0ZGRqOUTVuGdb84OOuumjD4er9RBiEcvpmZmaWz+tTMW/gfeTHDCDT5mgnGds2qe/HdMjEfAP5vCWdJwgAAee+WCXllCWcRMIDJSac0IDJmAtiuTYW/eGiRw1dr28pgvAYYuw6VOZZFgFAlnCllv7rKkMC0rI0OlIo5fWZyJgSmqc5S+s4ikVxfuHQqt55Wf56p531ceNl09lxifdn06Pmp0j/CafVXzOB9V8xgvmIG775iRniH+O/N4GlXzOD2evp7WjpV+l4x7+tdzNy7mHf3nvHNOJP2yhJedmUJt55W//dO3adF3/G6+33celp9itRrOl/Tazo/2Wt6uPNeNp2zexWFj/3oVcTZvaY37TEglxfxNZcX8ZOXF/3vOMj6/wM9IJ+tvQ5jIwAAAABJRU5ErkJggg==';
+		//Panel Icon
+	vcpr.defaultTitle = '<div id="vcpr.Nowplay.Title" class="vcpr.Nowplay.div">VocaPlayer 1.0</div>'; //Replace string for which you wants :)
+	vcpr.list = [];
+	vcpr.Flash = 0;
+	vcpr.nowPlay = 0;
+	vcpr.nowList = 0;
+	vcpr.state = -1;
+	vcpr.random = 0;
+	vcpr.nowArray = function(){
+		return vcpr.list[vcpr.nowList].songArray[vcpr.nowPlay];
+	};
+	vcpr.playSong = function(id,list){
+		list = ((list||list==0)?list:vcpr.nowList);
+		vcpr.Flash.setPlaybackQuality('small');
+		vcpr.Flash.loadVideoById(vcpr.list[list].songArray[id][2], 0);
+		vcpr.nowPlay=id;
+		vcpr.nowList=list;
+		vcpr.titleUpdate();
+		vcpr.panelUpdate();
+	}
+	vcpr.play = function(){
+		if(vcpr.state == 2){
+			vcpr.Flash.playVideo();
+		}else if(vcpr.state == 1){
+			vcpr.Flash.pauseVideo();
+		}else{
+			vcpr.playSong(vcpr.nowPlay,vcpr.nowList);
+		};
+		panelUpdate();
+	};
+	vcpr.stop = function(){
+		vcpr.Flash.stopVideo();
+	};
+	vcpr.nextSong = function(){
+		if(vcpr.random == 1){
+			//random play
+			var now = vcpr.nowPlay;
+			var next;
+			do{
+				next = Math.floor(Math.random() * vcpr.list[vcpr.nowList].songArray.length);
+			}while(now == next);
+			vcpr.playSong(next);
+		}else{
+			if(vcpr.nowPlay+1 == vcpr.list[vcpr.nowList].songArray.length){
+				vcpr.playSong(0);
+			}else{
+				vcpr.playSong(vcpr.nowPlay+1);
+			};
+		};
+		panelUpdate();
+	};
+	function vcprList(name) {
+		this.name = (name?name:"Default");
+		this.seriesNum = vcpr.list.length;
+		this.songArray = [];
+	  	this.addSong = function(song){this.songArray.push(song)};
+	  	this.addSongArray = function(songArray){this.songArray.concat(songArray)};
+	  	this.update = function(){vcpr.list[this.seriesNum] = this};
+	  	this.update();
+	};
+	vcpr.randomSwitch = function(){
+		vcpr.random = (vcpr.random==1?0:1);
+		vcpr.panelUpdate();
+	};
+	vcpr.title = function(str){
+		document.getElementById("vcpr.Nowplay").innerHTML = (str?str:vcpr.defaultTitle);
+	}
+	vcpr.titleUpdate = function(){
+		if(vcpr.state == 5||vcpr.state == -1){
+			vcpr.title();
+		}else{
+			var nowArr = vcpr.nowArray();
+			var temp = 
+				'<div id="vcpr.Nowplay.Title" class="vcpr.Nowplay.div"><a href="http://www.nicovideo.jp/watch/'+nowArr[4]+'" target="_blank">'+nowArr[0]+'</a></div>'+
+				'<div class="vcpr.Nowplay.div"><div id="vcpr.Nowplay.Uper">'+nowArr[3]+'</div>'+
+				'<div id="vcpr.Nowplay.Feat">feat.'+nowArr[1]+'</div></div>';
+			vcpr.title(temp);
+		}
+	};
+	vcpr.panelUpdate = function(){
+		document.getElementById('vcpr.Play').setAttribute('class',(vcpr.state == 2)?'vcpr.Pause':'vcpr.Play');
+		document.getElementById('vcpr.VolMute').setAttribute('class',(vcpr.Flash.isMuted())?'vcpr.MuteON':'vcpr.MuteOFF');
+		document.getElementById('vcpr.random').setAttribute('class',(vcpr.random)?'vcpr.RandomON':'vcpr.RandomOFF');
+	};
+	vcpr.vol = {};
+	vcpr.vol.value = 70;
+	vcpr.vol.up = function(){
+		if(vcpr.vol.value < 100){
+			vcpr.vol.value+=10;
+			vcpr.Flash.setVolume(vcpr.vol.value);
+		};
+	};
+	vcpr.vol.down = function(){
+		if(vcpr.vol.value > 0){
+			vcpr.vol.value-=10;
+			vcpr.Flash.setVolume(vcpr.vol.value);
+		};
+	};
+	vcpr.vol.muteSwitch = function(){
+		if(vcpr.Flash.isMuted()){
+			vcpr.Flash.unMute();
+		}else{
+			vcpr.Flash.mute();
+		};
+		vcpr.panelUpdate();
+	};
+	
+	//vcpr.ui
+	vcpr.ui = {};
+	vcpr.ui.viewList = 0;
+	vcpr.ui.displayList = function(num){
+		var temp = ""
+		document.getElementById('vcpr.ListUI.bar.a.'+vcpr.ui.viewList).setAttribute('class','vcpr.ListUI.bar.a');
+		for(i=0;vcpr.list[num].songArray[i];i++){
+		temp+=
+			'<div '+((num == vcpr.nowList&&i == vcpr.nowPlay&&(vcpr.state == 1||vcpr.state == 2||vcpr.state == 3))?'id="vcpr.ListUI.inner.nowPlay"':'')+' class="vcpr.ListUI.inner.songBlock" onclick="'+'vcpr.ui.click('+i+','+num+')'+'">'+
+				'<div class="vcpr.ListUI.inner.songBlock.uperAndsinger">'+
+					'<p class="vcpr.ListUI.inner.songBlock.uper">'+vcpr.list[num].songArray[i][3]+'</p>'+
+					'<p class="vcpr.ListUI.inner.songBlock.singer">'+vcpr.list[num].songArray[i][1]+'</p>'+
+				'</div>'+
+				'<img class="vcpr.ListUI.inner.songBlock.thumb" src="'+vcpr.ui.thumb(vcpr.list[num].songArray[i][2])+'" />'+
+				'<p class="vcpr.ListUI.inner.songBlock.title">'+vcpr.list[num].songArray[i][0]+'</p>'+
+			'</div>';
+		};
+		document.getElementById("vcpr.ListUI.inner").innerHTML = temp;
+		vcpr.ui.viewList = num;
+		document.getElementById('vcpr.ListUI.bar.a.'+vcpr.ui.viewList).setAttribute('class','vcpr.ListUI.bar.a vcpr.ListUI.bar.a.view');
+	};
+	vcpr.ui.click = function(id,list){
+		vcpr.playSong(id,list);
+		vcpr.ui.hideList();
+	}
+	vcpr.ui.thumb = function(YoutubeID){
+		return 'http://i'+Math.floor(Math.random()*4+1)+'.ytimg.com/vi/'+YoutubeID+'/default.jpg';
+	}
+	vcpr.ui.showList = function(){
+		//init List
+		var bar = ""; 
+		for(i=0;vcpr.list[i];i++){
+			bar+='<a class="vcpr.ListUI.bar.a" id="vcpr.ListUI.bar.a.'+i+'" href="'+'javascript:vcpr.ui.displayList('+i+')'+'">'+vcpr.list[i].name+'</a>';
+		};
+		document.getElementById("vcpr.ListUI.bar").innerHTML = bar;
+		vcpr.ui.viewList = vcpr.nowList;
+		vcpr.ui.displayList(vcpr.nowList);
+		//display List
+		document.getElementById("vcpr.ListUI.background").style.display="block";
+		getScreen();
+		document.getElementById("vcpr.ListUI.outer").style.left=(iPageWidth/2-250)+"px";
+		document.getElementById("vcpr.ListUI.inner").style.height=(iPageHeight-100)+"px";
+		document.getElementById('vcpr.ListUI.outer').setAttribute('class','vcpr.ListUI.outer.display');
+	};
+	vcpr.ui.hideList = function(){
+		document.getElementById("vcpr.ListUI.background").style.display="none";
+		document.getElementById('vcpr.ListUI.outer').setAttribute('class','vcpr.ListUI.outer.undisplay');
+	};
+</script>
+<!-- end of settings -->
+<!-- CSS -->
 <style>
-    #nowsong {
-        color: #ffffff;
-        background: #5897F4;
-        font-size: 140%
-    }
-    
-    #nowsinger {
-        color: #ffffff;
-        background: #ff0000;
-    }
-    
-    #songpost {
-        color: #ffffff;
-        background: #c0c0c0;
-    }
-    .listbrick{
-		width:100%;    
-		border-color: #FFFFFF;
-		border-style: solid;
-		border-width: 1px 0;
+	/*mouse pointer*/
+	.vcpr\.ListUI\.inner\.songBlock,.vcpr\.Play,
+	.vcpr\.Pause,
+	#vcpr\.Stop,
+	.vcpr\.RandomOFF,
+	.vcpr\.RandomON,
+	.vcpr\.MuteOFF,
+	.vcpr\.MuteON,
+	#vcpr\.VolUp,
+	#vcpr\.VolDown,
+	#vcpr\.NextSong,
+	#vcpr\.List{
+		cursor:pointer;
 	}
-	.listbrick:hover{
-		box-shadow:inset 0 0 25px black;
+	@-moz-keyframes dropDown
+	{
+		0%	
+		{
+			margin-top: -75px;
+			opacity: 0;
+		}
+		100%	
+		{
+			margin-top: 0px;
+			opacity: 1;
+		}
 	}
-    .playlist {
-		color: #FFFFFF;
+	@-webkit-keyframes dropDown
+	{
+		0%	
+		{
+			margin-top: -75px;
+			opacity: 0;
+		}
+		100%	
+		{
+			margin-top: 0px;
+			opacity: 1;
+		}
+	}
+	@-ms-keyframes dropDown
+	{
+		0%	
+		{
+			margin-top: -75px;
+			opacity: 0;
+		}
+		100%	
+		{
+			margin-top: 0px;
+			opacity: 1;
+		}
+	}
+	@keyframes dropDown
+	{
+		0%	
+		{
+			margin-top: -75px;
+			opacity: 0;
+		}
+		100%	
+		{
+			margin-top: 0px;
+			opacity: 1;
+		}
+	}
+	#vcpr\.ListUI\.background{
+		background-color: black;
+		background-color: rgba(0,0,0,0.6);
+    	display: none;
+    	width: 100%;
+    	height: 100%;
+    	top: 0;
+    	left: 0;
+    	position: fixed;
+	}
+	#vcpr\.ListUI\.outer{
+		background-color: gray;
+		background-color: rgba(0,0,0,0.7);
+		z-index: 3939;
+		width: 550px;
+		top:12px;
+    	position: fixed;
+    	padding: 25px;
+	}
+	.vcpr\.ListUI\.outer\.display{
+		display: block;
+     	-webkit-animation: dropDown 0.8s 1 ease-out;
+     	-moz-animation: dropDown 0.8s 1 ease-out;
+     	-ms-animation: dropDown 0.8s 1 ease-out;
+     	animation: dropDown 0.8s 1 ease-out;
+    }
+	.vcpr\.ListUI\.outer\.undisplay{
 		display: none;
-		height: 100%;
-		left: 0;
-		overflow-y: auto;
-		position: fixed;
-		top: 0;
-		width: 100%;
-		z-index: 2147483647;
-		cursor:hand;
-		cursor:pointer;
-    }
-    
-    .songlink {
-        padding: 2px;
-        background-color: #5897F4;
-    }
-    
-    .songlink a {
-        color: #ffffff;
-    }
-    
-    #bo_play {
-        background: url('http://i.imgur.com/QL2rp.png');
-        width: 20px;
-        height: 20px;
-        display: inline-block;
-    }
-    
-    #bo_next {
-        background: url('http://i.imgur.com/QL2rp.png');
-        background-position: 0 -20px;
-        width: 20px;
-        height: 20px;
-        display: inline-block;
-        position: relative;
-    }
-    
-    #bo_pause {
-        background: url('http://i.imgur.com/QL2rp.png');
-        background-position: 0 -40px;
-        width: 20px;
-        height: 20px;
-        display: inline-block;
-        position: relative;
-    }
-    
-    #bo_stop {
-        background: url('http://i.imgur.com/QL2rp.png');
-        background-position: 0 -60px;
-        width: 20px;
-        height: 20px;
-        display: inline-block;
-        position: relative;
-    }
-    
-    #bo_ro {
-        background: url('http://i.imgur.com/QL2rp.png');
-        background-position: 0 -80px;
-        width: 20px;
-        height: 20px;
-        display: inline-block;
-        position: relative;
-    }
-    
-    #in_play {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        background-color: #000000;
-        color: #ffffff;
-        display: none;
-    }
-    
-    .fakea, .fakea:link, .fakea:hover, .fakea:visited, .fakea:active {
-        text-decoration: none;
-        border-width: 0px;
-    }
-    
-    #vol {
-        width: 60px;
-        display: inline-block;
-    }
-	.songname{
-	    float: left;
-		font-size: 200%;
-		margin: 0;
-		position: absolute;    font-weight: bold;
-		text-shadow: 2px 2px 2px #000000;
-		width:250px;
 	}
-	.singername{
-		float: right;
-		margin-bottom: 0;
-		margin-top: 80px;    font-weight: bold;
-		text-shadow: 2px 2px 2px #000000;
+	#vcpr\.ListUI\.bar{
+		width: 500px;
 	}
-	#playlistin{
-		line-height: 0;
-		margin: 20px;
-		width: auto;
-		z-index: 39393939;
+	.vcpr\.ListUI\.inner\.songBlock\.thumb{
+		width: 104px;
+		height: 80px;
+		float: left;
 	}
-	.listbrick{
-		border-color: #FFFFFF;
+	.vcpr\.ListUI\.inner\.songBlock{
+		clear: both;
+		padding: 15px;
+		height: 80px;
 		border-style: solid;
-		border-width: 0;
+		border-color: #4e4e4e;
+		border-width: 1px 0 0 0;
+	}
+	.vcpr\.ListUI\.inner\.songBlock:first-child{
+		border-width: 0px;
+	}
+	.vcpr\.ListUI\.inner\.songBlock\.uperAndsinger{
+		float: right;
+	}
+	.vcpr\.ListUI\.inner\.songBlock\.thumb{
+		margin-right: 15px;
+	}
+	.vcpr\.ListUI\.inner\.songBlock\.uper{
+		margin: 0px;
+		font-size: 10px;
+	}
+	.vcpr\.ListUI\.inner\.songBlock\.singer{
+		margin: 0px;
+		font-size: 14px;
+	}
+	#vcpr\.ListUI\.inner{
+		overflow-y: scroll;
+		background: none repeat scroll 0 0 white;
+		border: 0 solid;
+		border-radius: 15px 15px 15px 15px;
+ 		overflow-y: scroll;
+	}
+	#vcpr\.ListUI\.bar{
+		height: 25px;
+		overflow: hidden;
+		padding: 0 15px 0 15px;
+	}
+	.vcpr\.ListUI\.inner\.songBlock:hover{
+		background: rgb(125,126,125); /* Old browsers */
+		background: -moz-linear-gradient(top,  rgba(125,126,125,1) 0%, rgba(14,14,14,1) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(125,126,125,1)), color-stop(100%,rgba(14,14,14,1))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
+		color:white;
+	}
+	#vcpr\.ListUI\.inner\.nowPlay{
+		background: rgb(14,14,14,1); /* Old browsers */
+		background: -moz-linear-gradient(top,  rgba(14,14,14,1) 0%, rgba(125,126,125,1) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(14,14,14,1)), color-stop(100%,rgba(125,126,125,1))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  rgba(14,14,14,1) 0%,rgba(125,126,125,1) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  rgba(14,14,14,1) 0%,rgba(125,126,125,1) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  rgba(14,14,14,1) 0%,rgba(125,126,125,1) 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  rgba(14,14,14,1) 0%,rgba(125,126,125,1) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e0e0e', endColorstr='#7d7e7d',GradientType=0 ); /* IE6-9 */
+		color:white;
+	}
+	.vcpr\.ListUI\.bar\.a{
+		color: white;
+    	margin: 2px 5px;
+    	text-decoration: none;
+		border: 0px solid;
+		border-radius: 5px 5px 0 0;
+		padding: 5px 5px 0 5px;
+	}
+	.vcpr\.ListUI\.bar\.a\.view{
+		color: black;
+		background: white;
+	}
+	#vcpr\.Panel div{
 		display: inline-block;
-		line-height: 1;
-		margin: 2px;
-		width: 250px;
-		z-index: 2147483647;
-		cursor:hand;
-		cursor:pointer;
 	}
-	.ui-slider-horizontal .ui-slider-handle{
-		padding:0;
+	.vcpr\.Play{
+		width: 30px;
+		height: 30px;
+		overflow: hidden;
+		background-position: -0px -0px;
+		margin:10px 5px 5px 0;
 	}
-	#listout{
-		width:150px;
-		cursor:hand;
-		cursor:pointer;
+	.vcpr\.Play:hover{
+		background-position: -0px -30px;
 	}
-	.fakea:hover{
-		background:none;
-		box-shadow:inset 0 0 5px #5897F4;
+	.vcpr\.Pause{
+		width: 30px;
+		height: 30px;
+		overflow: hidden;
+		background-position: -30px -0px;
+		margin:10px 5px 5px 0;
+	}
+	.vcpr\.Pause:hover{
+		background-position: -30px -30px;
+	}
+	#vcpr\.Stop{
+		width: 30px;
+		height: 30px;
+		overflow: hidden;
+		background-position: -60px -0px;
+		margin:10px 5px 5px 10px;
+	}
+	#vcpr\.Stop:hover{
+		background-position: -60px -30px;
+	}
+	.vcpr\.RandomOFF{
+		width: 30px;
+		height: 30px;
+		overflow: hidden;
+		background-position: -120px -0px;
+		margin:10px 5px 5px 0;
+	}
+	.vcpr\.RandomOFF:hover{
+		background-position: -120px -30px;
+	}
+	.vcpr\.RandomON{
+		width: 30px;
+		height: 30px;
+		overflow: hidden;
+		background-position: -150px -0px;
+		margin:10px 5px 5px 0;
+	}
+	.vcpr\.RandomON:hover{
+		background-position: -150px -30px;
+	}
+	.vcpr\.MuteON{
+		width: 30px;
+		height: 30px;
+		overflow: hidden;
+		background-position: -210px -0px;
+		margin:10px 5px 5px 0;
+	}
+	.vcpr\.MuteON:hover{
+		background-position: -210px -30px;
+	}
+	.vcpr\.MuteOFF{
+		width: 30px;
+		height: 30px;
+		overflow: hidden;
+		background-position: -180px -0px;
+		margin:10px 5px 5px 0;
+	}
+	.vcpr\.MuteOFF:hover{
+		background-position: -180px -30px;
+	}
+	#vcpr\.VolUp{
+		width: 30px;
+		height: 15px;
+		overflow: hidden;
+		background-position: -240px -0px;
+		margin: 0 0 5px 0;
+	}
+	#vcpr\.VolUp:hover{
+		background-position: -240px -30px;
+	}
+	#vcpr\.VolDown{
+		width: 30px;
+		height: 15px;
+		overflow: hidden;
+		background-position: -240px -15px;
+		margin: 0;
+	}
+	#vcpr\.VolDown:hover{
+		background-position: -240px -45px;
+	}
+	#vcpr\.NextSong{
+		width: 30px;
+		height: 30px;
+		overflow: hidden;
+		background-position: -90px -0px;
+		margin:10px 5px 5px 0;
+	}
+	#vcpr\.NextSong:hover{
+		background-position: -90px -30px;
+	}
+	#vcpr\.Panel div div{
+		display: block;
+	}
+	##vcpr\.Panel{
+		height: 57px;
+		width: 240px;
+	}
+	#vcpr\.List{
+		padding: 5px 15px;
+		color: white;
+		background-color: black;
+    	margin: 0;
+    	width: 210px;
+    	text-align: center;
+    	line-height: 33px;
+	}
+	#vcpr\.List:hover{
+		background: rgba(96,193,255,1); /* Old browsers */
+		background: -moz-linear-gradient(top,  rgba(96,193,255,1) 0%, rgba(21,142,219,1) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(96,193,255,1)), color-stop(100%,rgba(21,142,219,1))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  rgba(96,193,255,1) 0%,rgba(21,142,219,1) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  rgba(96,193,255,1) 0%,rgba(21,142,219,1) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  rgba(96,193,255,1) 0%,rgba(21,142,219,1) 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  rgba(96,193,255,1) 0%,rgba(21,142,219,1) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#60c1ff', endColorstr='#158edb',GradientType=0 ); /* IE6-9 */
+		box-shadow: 0 0 15px #60c1ff;
+	}
+	#vcprYoutube{
+		margin: 5px 0 10px 0;
+	}
+	#vcpr\.Nowplay\.Title{
+		display: inline-block;
+		width: 240px;
+		text-align: center;
+		background: black;
+		line-height: 33px;
+		margin: 5px 0;
+		color: white;
+	}
+	#vcpr\.Nowplay\.Title:hover{
+		background: rgba(96,193,255,1); /* Old browsers */
+		background: -moz-linear-gradient(top,  rgba(96,193,255,1) 0%, rgba(21,142,219,1) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(96,193,255,1)), color-stop(100%,rgba(21,142,219,1))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  rgba(96,193,255,1) 0%,rgba(21,142,219,1) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  rgba(96,193,255,1) 0%,rgba(21,142,219,1) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  rgba(96,193,255,1) 0%,rgba(21,142,219,1) 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  rgba(96,193,255,1) 0%,rgba(21,142,219,1) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#60c1ff', endColorstr='#158edb',GradientType=0 ); /* IE6-9 */
+	}
+	#vcpr\.Nowplay\.Uper{
+		display: inline-block;
+		text-align: center;
+		background: black;
+		margin-right:5px;
+		color: white;
+		line-height: 33px;
+		width: 120px;
+	}
+	#vcpr\.Nowplay\.Feat{
+		display: inline-block;
+		text-align: center;
+		background: black;
+		color: white;
+		line-height: 33px;
+		width: 115px;
+	}
+	.vcpr\.Nowplay\.div{
+		margin-bottom: 5px;
+	}
+	#vcpr\.Nowplay\.Title a{
+		text-decoration: none;
+		color: white;
 	}
 </style>
-<a id="nicolink"><span id="nowsong"></span>
-    <br/>
-    <span id="nowsinger"></span><span></span><span id="songpost"></span>
-</a>
-    <br/>
-<div id="ytapiplayer">
-    請安裝Flash，開啟Javascript
+<!-- end of CSS -->
+<!-- UI -->
+<div id="vcpr.Nowplay">
+	<div id="vcpr.Nowplay.Title"></div>
+	<div id="vcpr.Nowplay.Link.Youtube"></div>
+	<div id="vcpr.Nowplay.Link.Nico"></div>
+	<div id="vcpr.Nowplay.Uper"></div>
+	<div id="vcpr.Nowplay.Feat"></div>
 </div>
-<br/>
-<a href="javascript:start()" class="fakea"><span id="bo_play"> 　 </span></a>
-<a href="javascript:pause()" class="fakea"><span id="bo_pause"> 　 </span></a>
-<a href="javascript:next()" class="fakea"><span id="bo_next""> 　 </span></a>
-<a href="javascript:ytplayer.stopVideo()" class="fakea"><span id="bo_stop"> 　 </span></a>
-<a href="javascript:randomopen()" class="fakea"><span id="bo_ro"> 　 </span></a>
-<div id="vol">
+<div id="vcpr.Flash">
+	<p class="vcpr.errorText">請安裝Adobe Flash，或是開啟瀏覽器的Javascript設定</p>
+	<p class="vcpr.errorText">Please install Adobe Flash,or enable JavaScript settings of your web browser.</p>
 </div>
-<div id="listout" onClick="showlist();">播放清單</div>
-<div class="playlist" onClick="hidelist();">
-<div id="playlistin"></div>
+<div id="vcpr.Panel">
+	<div id="vcpr.Stop" onclick="vcpr.stop()"></div>
+	<div id="vcpr.NextSong" onclick="vcpr.nextSong()"></div>
+	<div id="vcpr.Play" class="vcpr.Play" onclick="vcpr.play()"></div>
+	<div id="vcpr.random" class="vcpr.RandomOFF" onclick="vcpr.randomSwitch()"></div>
+	<div id="vcpr.VolMute" class="vcpr.MuteOFF" onclick="vcpr.vol.muteSwitch()"></div>
+	<div>
+		<div id="vcpr.VolUp" onclick="vcpr.vol.up()"></div>
+		<div id="vcpr.VolDown" onclick="vcpr.vol.down()"></div>
+	</div>
 </div>
-<script type="text/javascript">
-function showlist(){
-$('.playlist').show('fold','slow');
-}
-function hidelist(){
-$('.playlist').hide('fold','slow');
-}
-$("#listout").button();
-    document.write('<link href="http://dl.dropbox.com/u/9342599/Voca/jquery-ui-1.8.10.custom.css" rel="stylesheet" type="text/css"/>');
-    $("#vol").slider();
-    var space = '<span style="background:#ffffff;color:#000000;width:2px">,</span>';
-    var ifpause = false;
-    var url = [];
-    var song = [];
-    var singer = [];
-    var songpost = [];
-    var nico = [];
-    var image = [];
-    function AddList(title, ssinger, u2url, post, nicolink, background){
-        song.push(title);
-        url.push(u2url);
-        singer.push(ssinger);
-        songpost.push(post);
-        nico.push(nicolink);
-		image.push(background);
-    }
-    
-    $(".playlist").css("background", 'rgba(0,0,0,' + listopacity + ')');
-    
-songslist();
-    var list = '';
-    var listin = 0
-    for (var i = 0; i < url.length; i++) {
-		list = list + '<div class="listbrick" style="background:url('+image[i]+');" onclick="javascript:b=' + i + ';ifpause = false;start();"><p class="songname">'+song[i]+'</p><p class="singername">'+singer[i]+'</p></div>'
-    };
-    document.getElementById("playlistin").innerHTML = list;
-    $(".listbrick").css('height',brickheight+'px');
-    $(".listbrick").css('width',brickwidthpx+'px');
+<div id="vcpr.List" onclick="vcpr.ui.showList()">播放清單</div>
+<div id="vcpr.ListUI.background" onclick="vcpr.ui.hideList()">
+</div>
+<div id="vcpr.ListUI.outer" class="vcpr.ListUI.outer.undisplay">
+	<div id="vcpr.ListUI.bar"></div>
+	<div id="vcpr.ListUI.inner"></div>
+</div>
+<!-- end of UI -->
+
+<!-- main script -->
+<script>
+//List Add
+defaultList = new vcprList("播放清單");
+//["song","feat","Youtube ID","UPer","NicoNico ID","Cover"]
+defaultList.addSong(["円尾坂の仕立屋", "巡音ルカ", "jIlGb-wZ7i8", "悪ノＰ", "sm9032932","http://i.imgur.com/Yvr1C.png"]);
+defaultList.addSong(["ジェンガ", "初音ミク", "hz9l_VrCxP0", "40㍍P", "sm9558887","http://i.imgur.com/QzvOi.png"]);
+defaultList.addSong(["アンチクロロベンゼン", "鏡音リン", "JgJgxUxURN4", "オワタP", "sm12154467","http://i.imgur.com/hRLUA.png"]);
+defaultList.addSong(["パラジクロロベンゼン", "鏡音レン", "kqvCAhs81p0", "オワタP", "sm8269164","http://i.imgur.com/5XjDN.png"]);
+defaultList.addSong(["Alice", "初音ミク", "CmA56YpUcho", "古川P", "nm7869327","http://i.imgur.com/nyBIx.png"]);
+list2 = new vcprList("播放清單2(自己命名)");
+list2.addSong(["腐れ外道とチョコレゐト", "初音ミク", "V5pIBfPD6Qo", "ピノキオP", "sm13275244","http://i.imgur.com/ELkNY.png"]);
+list2.addSong(["妄想スケッチ", "初音ミク", "zGEQ0TJySPY", "40㍍P", "sm13252011","http://i.imgur.com/CVMPY.png"]);
+list2.addSong(["No logic", "巡音ルカ", "4KyRXxQ06Fo", "ジミーサムP", "sm13221358","http://i.imgur.com/fyFDo.png"]);
+list2.addSong(["えれくとりっく・えんじぇぅ", "初音ミク", "idXnetgh2fk", "骨盤P", "sm4069267","http://i.imgur.com/kCjx7.png"]);
+list2.addSong(["裏表ラバーズ", "初音ミク", "lkMgY6GKznA", "wowaka", "sm8082467","http://i.imgur.com/RKV99.png"]);
+list2.addSong(["円尾坂の仕立屋", "巡音ルカ", "jIlGb-wZ7i8", "悪ノＰ", "sm9032932","http://i.imgur.com/Yvr1C.png"]);
+list2.addSong(["ジェンガ", "初音ミク", "hz9l_VrCxP0", "40㍍P", "sm9558887","http://i.imgur.com/QzvOi.png"]);
+list2.addSong(["アンチクロロベンゼン", "鏡音リン", "JgJgxUxURN4", "オワタP", "sm12154467","http://i.imgur.com/hRLUA.png"]);
+list2.addSong(["パラジクロロベンゼン", "鏡音レン", "kqvCAhs81p0", "オワタP", "sm8269164","http://i.imgur.com/5XjDN.png"]);
+list2.addSong(["Alice", "初音ミク", "CmA56YpUcho", "古川P", "nm7869327","http://i.imgur.com/nyBIx.png"]);
+//Base64 BGImage
+    document.getElementById('vcpr.Stop').style.backgroundImage = 'url('+vcpr.panelIcon+')';
+    document.getElementById('vcpr.NextSong').style.backgroundImage = 'url('+vcpr.panelIcon+')';
+    document.getElementById('vcpr.Play').style.backgroundImage = 'url('+vcpr.panelIcon+')';
+    document.getElementById('vcpr.random').style.backgroundImage = 'url('+vcpr.panelIcon+')';
+    document.getElementById('vcpr.VolMute').style.backgroundImage = 'url('+vcpr.panelIcon+')';
+    document.getElementById('vcpr.VolUp').style.backgroundImage = 'url('+vcpr.panelIcon+')';
+    document.getElementById('vcpr.VolDown').style.backgroundImage = 'url('+vcpr.panelIcon+')';
+//Base64 BGImage
+//Youtube Player API
     var params = {};
 	params.allowScriptAccess = "always";
 	params.wmode = "Opaque";
     var atts = {
-        id: "myytplayer"
+        id: "vcprYoutube"
     };
-    swfobject.embedSWF("http://www.youtube.com/apiplayer?enablejsapi=1&version=3&playerapiid=ytplayer", "ytapiplayer", "240", "200", "8", null, null, params, atts);
+    swfobject.embedSWF("http://www.youtube.com/apiplayer?enablejsapi=1&version=3&playerapiid=ytplayer", "vcpr.Flash", "240", "200", "8", null, null, params, atts);
     function onYouTubePlayerReady(playerId){
-        ytplayer = document.getElementById("myytplayer");
-        ytplayer.addEventListener("onStateChange", "onytplayerStateChange");
-        
-        ytplayer.attachEvent("onStateChange", onytplayerStateChange);
-    }
-    
+        vcpr.Flash = document.getElementById("vcprYoutube");
+        vcpr.Flash.addEventListener("onStateChange", "onytplayerStateChange");
+        vcpr.Flash.addEventListener("onError", "onError");
+        vcpr.Flash.attachEvent("onStateChange", onytplayerStateChange);
+        vcpr.Flash.attachEvent("onError", onError);
+    };
     function onytplayerStateChange(newState){
         if (newState == 0) {
-            next();
+            vcpr.nextSong();
         };
-        };
-    var b = 12
-    var random = false
-    function randomopen(){
-        if (random) {
-            random = false;
-            $('#bo_ro').css('background-position', '0 -80px');
-        }
-        else {
-            random = true
-            $('#bo_ro').css('background-position', '0 -100px');
-        };
-        };
-    function next(){
-        if (random) {
-            b = Math.floor(Math.random() * url.length);
-        }
-        else 
-            if (b > url.length - 1) {
-                b = 0
-            }
-            else {
-                b++
-            };
-        ytplayer.loadVideoById(url[b], 0);
-        document.getElementById("nowsong").innerHTML = song[b];
-        document.getElementById("nowsinger").innerHTML = singer[b];
-        document.getElementById("songpost").innerHTML = songpost[b];
-        document.getElementById("nicolink").href = 'http://tw.nicovideo.jp/watch/' + nico[b];
-        $("#vol").slider("option", "value", ytplayer.getVolume());
+        vcpr.state = newState;
+		vcpr.titleUpdate();
+		vcpr.panelUpdate();
     };
-            $("#vol").slider("option", "value", theVolume);
-    function start(){
-        if (ifpause) {
-            ytplayer.playVideo();
-            ifpause = false;
-        }
-        else {
-            ytplayer.loadVideoById(url[b], 0)
-            document.getElementById("nowsong").innerHTML = song[b];
-            document.getElementById("nowsinger").innerHTML = singer[b];
-            document.getElementById("songpost").innerHTML = songpost[b];
-            document.getElementById("nicolink").href = 'http://tw.nicovideo.jp/watch/' + nico[b];
-            var valuew = $("#vol").slider("option", "value");
-            ytplayer.setVolume(valuew);
-            $("#vol").slider("option", "value", ytplayer.getVolume());
-        }
+    function onError(errorCode){
+        vcpr.nextSong();
     };
-    function pause(){
-        if (ifpause) {
-            ytplayer.playVideo();
-            ifpause = false;
-        }
-        else {
-            ytplayer.pauseVideo();
-            ifpause = true;
-        }
-    }
-    
-    $("#vol").slider({
-        change: function(){
-            var value = $("#vol").slider("option", "value");
-            ytplayer.setVolume(value);
-        }
-    });
+    vcprCallback();
 </script>
-<style>
-	.listbrick{
-		*display: inline;
-	}
-</style>
+<!-- end of main script -->
